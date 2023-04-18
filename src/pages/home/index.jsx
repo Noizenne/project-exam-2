@@ -1,6 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyledHome } from '../../styles/Home.styles';
+import { API_URL } from '../../api/constants/url';
+import { API_venues } from '../../api/constants/url';
+import Venues from '../../components/Venues';
 function Home() {
+
+  const [venues, setVenues] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredVenues, setFilteredVenues] = useState([]);
+
+  useEffect(() => {
+    async function getVenues(url) {
+      try {
+        setIsLoading(true);
+        setIsError(false);
+
+        const response = await fetch(url);
+        const json = await response.json();
+
+        setVenues(json);
+      } catch(error) {
+        console.log(error);
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    document.title = "Holidaze | Home";
+    getVenues(API_URL + API_venues)
+  }, []);
+
   return (
     <StyledHome>
       <div className='hero'>
@@ -12,6 +44,10 @@ function Home() {
           <button>BROWSE</button>
           </div>
         </div>
+      </div>
+      <div className='venuesContainer'>
+        <h2>Venues</h2>
+        <Venues venues={venues}/>
       </div>
     </StyledHome>
   )

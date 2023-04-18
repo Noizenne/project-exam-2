@@ -9,6 +9,7 @@ export const StyledNav = styled.nav`
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    box-shadow: 0px 8px 10px -10px #1b1b1b;  
     z-index: 1001;
     
     img {

@@ -31,8 +31,10 @@ export const StyledHome = styled.div`
                 h1 {
                     color:  ${({theme}) => theme.colors.primary};
                     font-size: 30px;
+                    font-weight: 600;
                     margin: 0;
                 }
+
                 p {
                     font-size: 20px;
                 }
@@ -42,6 +44,7 @@ export const StyledHome = styled.div`
                     width: 165px;
                     height: 40px;
                     font-size: 20px;
+                    font-weight: 500;
                     background-image: linear-gradient(to right, #ED7200 0%, #FFB800  90%);
                     border: 1px solid #ED7200;
                     border-radius: 15px;
@@ -51,5 +54,10 @@ export const StyledHome = styled.div`
             }
         }
         
+    }
+
+    .venuesContainer {
+        width: 70%;
+        margin: auto;
     }
 `
