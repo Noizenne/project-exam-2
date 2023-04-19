@@ -51,6 +51,7 @@ export const StyledHome = styled.div`
                     color: ${({theme}) => theme.colors.white};
                     cursor: pointer;
                 }
+
             }
         }
         

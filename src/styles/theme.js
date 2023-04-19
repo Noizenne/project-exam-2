@@ -5,6 +5,7 @@ export const theme = {
       black: "#21222D",
       white: "#F6F6F6",
       yellow: "#FFB800",
+      blue: "#0094FF"
     },
     fonts: {
       fontFamily: "'Raleway', sans-serif",

@@ -13,10 +13,23 @@ export const StyledFooter = styled.footer`
     h4 {
         font-size: 16px;
         font-weight: 300;
-        margin: 5px;
     }
 
     p {
         font-size: 12px;
     }
+
+    a {
+        text-decoration: none;
+        color: ${({theme}) => theme.colors.black};
+        margin: 5px;
+        font-weight: 500;
+    }
+
+    .socialsContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    
 `
