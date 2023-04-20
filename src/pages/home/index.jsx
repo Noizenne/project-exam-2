@@ -8,8 +8,6 @@ function Home() {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [searchInput, setSearchInput] = useState("");
-  const [filteredVenues, setFilteredVenues] = useState([]);
 
   useEffect(() => {
     async function getVenues(url) {

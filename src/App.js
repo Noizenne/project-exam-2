@@ -3,8 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
 import Layout from "./components/Layout/index";
-import Home from "./pages/home";
 import { theme } from "./styles/theme";
+
+//Pages
+import Home from "./pages/home";
+import Venue from "./pages/venue";
 
 function App() {
   return (
@@ -12,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* <Route path='/venue/:id' element={<Venue />}/>
-      <Route path='/venues' element={<Venues />}/>
+          <Route path='/venue/:id' element={<Venue />}/>
+      {/* <Route path='/venues' element={<Venues />}/>
       <Route path='/about' element={<About />}/>
       <Route path='/contact' element={<Contact />}/>
       <Route path='/register' element={<Register />}/>

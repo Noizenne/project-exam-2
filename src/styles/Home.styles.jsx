@@ -60,5 +60,10 @@ export const StyledHome = styled.div`
     .venuesContainer {
         width: 70%;
         margin: auto;
+
+        a {
+            text-decoration: none;
+            color: ${({theme}) => theme.colors.black};
+        }
     }
 `

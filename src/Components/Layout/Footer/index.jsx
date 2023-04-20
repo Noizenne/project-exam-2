@@ -7,17 +7,15 @@ export default function Footer() {
   return (
     <StyledFooter>
       <Link to="/">
-        <img src="/logo.jpg" alt="Holidaze logo" />
+        <img src="/blueLogo.png" alt="Holidaze logo" />
       </Link>
       <Link to="/about">About</Link>
       <Link to="/contact">Contact us</Link>
-
       <div className="socialsContainer">
-        <FacebookIcon fontSize="large" sx={{ color: "blue" }} />
-
-        <InstagramIcon fontSize="large" sx={{ color: "blue" }} />
+        <FacebookIcon fontSize="large" sx={{ color: "blue" }}/>
+        <InstagramIcon fontSize="large" sx={{ color: "blue" }}/>
       </div>
       <p>&copy; Holidaze</p>
     </StyledFooter>
-  );
+  )
 }
