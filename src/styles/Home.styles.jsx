@@ -44,7 +44,7 @@ export const StyledHome = styled.div`
           font-weight: 500;
           background-image: linear-gradient(to right, #ed7200 0%, #ffb800 90%);
           border: 1px solid #ed7200;
-          border-radius: 15px;
+          border-radius: 0 15px 15px 0;
           color: ${({ theme }) => theme.colors.white};
           cursor: pointer;
         }

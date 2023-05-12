@@ -7,7 +7,7 @@ export const StyledSearch = styled.div`
         align-items: center;
         background-color: ${({theme}) => theme.colors.white};
         border: none;
-        border-radius: 15px 15px 0 0;
+        border-radius: 15px 0 0 15px;
         max-width: 260px;
 
         input {
@@ -17,7 +17,7 @@ export const StyledSearch = styled.div`
             border-radius: 15px;
             font-size: 16px;
             width: 260px;
-
+            margin-left: 5px;
             :focus {
                 outline: none;
             }
