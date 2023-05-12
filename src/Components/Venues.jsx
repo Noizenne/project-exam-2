@@ -4,7 +4,7 @@ import { StyledUl } from '../styles/Venues.styles';
 function Venues({venues}) {
   return (
     <StyledUl>
-      {venues.map((venue) => (
+      {venues.slice(0, 8).map((venue) => (
         <VenueCard key={venue.id} venue={venue} />
       ))}
     </StyledUl>

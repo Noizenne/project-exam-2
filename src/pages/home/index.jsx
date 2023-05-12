@@ -30,7 +30,6 @@ function Home() {
         setIsLoading(false);
       }
     }
-
     document.title = "Holidaze | Home";
     getVenues(API_URL + API_venues);
   }, []);
@@ -42,6 +41,8 @@ function Home() {
     });
     setFilteredVenues(result);
   }
+
+
   return (
     <StyledHome>
       <div className="hero">
@@ -72,8 +73,29 @@ function Home() {
           </div>
         </div>
       </div>
+      <div className="suggested">
+        <h2>Suggested destinations</h2>
+        <div className="countries">
+          <Link to="/norway" className="country">
+            <img src="/norway.jpg" alt="Norway"/>
+            <p>Norway</p>
+          </Link>
+          <Link to="/usa" className="country">
+            <img src="/usa.jpg" alt="USA"/>
+            <p>USA</p>
+          </Link>
+          <Link to="/italy" className="country">
+            <img src="/italy.jpg" alt="Italy"/>
+            <p>Italy</p>
+          </Link>
+          <Link to="/australia" className="country">
+            <img src="/aus.jpg" alt="Australia"/>
+            <p>Australia</p>
+          </Link>
+        </div>
+      </div>
       <div className="venuesContainer">
-        <h2>Venues</h2>
+        <h2>Featured venues</h2>
         <Venues venues={venues} />
       </div>
     </StyledHome>

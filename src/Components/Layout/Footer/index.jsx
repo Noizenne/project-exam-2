@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <StyledFooter>
       <Link to="/">
-        <img src="/blueLogo.png" alt="Holidaze logo" />
+        <img src="/logo.png" alt="Holidaze logo" />
       </Link>
       <Link to="/about">About</Link>
       <Link to="/contact">Contact us</Link>

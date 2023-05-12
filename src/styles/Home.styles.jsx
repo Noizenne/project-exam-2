@@ -24,7 +24,7 @@ export const StyledHome = styled.div`
         flex-direction: column;
         text-align: center;
         width: 500px;
-        bottom: 100px;
+        bottom: 50px;
 
         h1 {
           color: ${({ theme }) => theme.colors.primary};
@@ -60,7 +60,6 @@ export const StyledHome = styled.div`
           flex-direction: column;
           top: 164px;
           background-color: ${({ theme }) => theme.colors.white};
-          
 
           a {
             color: ${({ theme }) => theme.colors.black};
@@ -77,9 +76,43 @@ export const StyledHome = styled.div`
     }
   }
 
+  .suggested {
+    width: 70%;
+    margin: auto;
+
+    .countries {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .country {
+        position: relative;
+
+      img {
+        width: 280px;
+        height: 230px;
+        border-radius: 15px;
+      }
+
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        color: black;
+        font-size: 22px;
+        font-weight: bold;
+        background-color: #f6f6f675;
+      }
+    }
+  }
   .venuesContainer {
     width: 70%;
     margin: auto;
+
+    margin-top: 2rem;
 
     a {
       text-decoration: none;
