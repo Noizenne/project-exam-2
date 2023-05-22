@@ -88,10 +88,10 @@ export const StyledHome = styled.div`
 
     .country {
         position: relative;
-
+        padding: 10px;
       img {
-        width: 280px;
-        height: 230px;
+        width: 100%;
+        height: 100%;
         border-radius: 15px;
       }
 

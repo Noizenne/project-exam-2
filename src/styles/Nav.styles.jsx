@@ -30,5 +30,10 @@ export const StyledNav = styled.nav`
             color: ${({theme}) => theme.colors.primary};
         }
     }
+
+    .accountLinks {
+        display: flex;
+        flex-direction: column;
+    }
     
 `
