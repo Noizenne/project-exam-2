@@ -7,7 +7,7 @@ import { theme } from "./styles/theme";
 
 //Pages
 import Home from "./pages/home";
-import Venue from "./pages/venue";
+import VenuePage from "./pages/venue";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='/venue/:id' element={<Venue />}/>
+          <Route path='/venue/:id' element={<VenuePage />}/>
       {/* <Route path='/venues' element={<Venues />}/>
       <Route path='/about' element={<About />}/>
       <Route path='/contact' element={<Contact />}/>
