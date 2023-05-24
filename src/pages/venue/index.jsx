@@ -1,9 +1,9 @@
 import React from 'react'
-
-function Venue() {
+import Venue from '../../components/Venue'
+function VenuePage() {
   return (
-    <div>Venue</div>
+    <div><Venue/></div>
   )
 }
 
-export default Venue
+export default VenuePage
