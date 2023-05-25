@@ -11,9 +11,9 @@ import { API_URL } from "../../../api/constants/url";
 import { API_venues } from "../../../api/constants/url";
 import Register from "../../Register";
 import Login from "../../Login";
+import { load } from "../../../storage";
 
 function AccountLoggedIn() {
-  const username = localStorage.getItem("username");
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -51,6 +51,9 @@ function AccountLoggedIn() {
     window.location.reload();
   }
 
+  const profile = load("profile");
+  const userName = profile.name;
+
   return (
     <>
       <Button
@@ -69,7 +72,10 @@ function AccountLoggedIn() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem href={`/profile/${username}`}>Profile</MenuItem>
+        <Link to={`/profile/${userName}`}>
+          <MenuItem>Profile</MenuItem>
+        </Link>
+
         <MenuItem onClick={() => handleLogout()}>Logout</MenuItem>
       </Menu>
     </>

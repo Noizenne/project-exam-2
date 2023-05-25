@@ -7,56 +7,27 @@ import PostData from "../../api/PostData";
 import { API_URL } from "../../api/constants/url";
 import { API_bookings } from "../../api/constants/url";
 import { load } from "../../storage";
-import { StyledBook } from "../../styles/BookAVenue";
-import Login from "../Login";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
+import { StyledBook } from "../../styles/BookAVenue.styles";
+import Confirmation from "../Confirmation";
 
 function Booking({ venue }) {
-  const [response, setResponse] = useState(null);
+  const [data, setData] = useState(null);
   const [totalPrice, setTotalPrice] = useState(venue.price);
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
   const [isError, setIsError] = useState(true);
-  const [showError, setShowError] = useState("hidden");
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const [openModal, setOpenModal] = React.useState(false);
-  const handleOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseIcon = () => {
-    setAnchorEl(null);
-  };
-
-  const successModal = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "#f6f6f6",
-    border: "1px solid #0031DD",
-    boxShadow: 24,
-    borderRadius: 10,
-  };
 
   const profile = load("profile");
   const serviceFee = 10;
   const total = serviceFee + totalPrice;
+
   function getDateRange(range) {
     setDateRange(range);
   }
 
   const bookVenue = async () => {
-    setResponse(
+    setData(
       await PostData(`${API_URL}${API_bookings}`, {
         dateFrom: startDate.toISOString(),
         dateTo: endDate.toISOString(),
@@ -81,7 +52,6 @@ function Booking({ venue }) {
     numberOfNights
       ? setTotalPrice(venue.price * numberOfNights)
       : setTotalPrice(venue.price);
-    setShowError("hidden");
     // Create an array with all the dates from the chosen period
     while (currentDate <= endDate) {
       allDates.push(new Date(currentDate));
@@ -102,28 +72,11 @@ function Booking({ venue }) {
       : setIsError(false); */
   }, [dateRange]);
 
-  if (response && response.id) {
+  if (data && data.id) {
     return (
-      <Modal
-        open={openModal}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={successModal}>
-          <section>
-            <h3>Booking successful</h3>
-            <p>From: {format(new Date(response.dateFrom), "dd/MM/yyyy")}</p>
-            <p>To: {format(new Date(response.dateTo), "dd/MM/yyyy")}</p>
-            <div>
-              <span>Total Price: ${total} </span>
-            </div>
-            <Link to={`/profile/${response.name}`}>View booking</Link>
-          </section>
-        </Box>
-      </Modal>
-    );
-  }
+    <Confirmation data={data}/> 
+    )
+  } 
   return (
     <StyledBook>
       <div>
@@ -146,7 +99,7 @@ function Booking({ venue }) {
             >
               -
             </button>
-            <span>{numberOfGuests}</span>
+            <p>{numberOfGuests}</p>
             <button
               className={`${
                 numberOfGuests === venue.maxGuests
@@ -163,14 +116,22 @@ function Booking({ venue }) {
         <div>
           <p>Service fee: ${serviceFee} </p>
         </div>
-        <p>
-          <span>Total price: ${total}</span>
-        </p>
+        <div>
+          <p>Total price: ${total}</p>
+        </div>
         {!profile ? (
-            
-          <button className="btn" onClick={handleOpen}>Login to Book</button>
+          <>
+            <button className="btn" disabled>
+              Book Now
+            </button>
+            <p className="message">You must login to book a venue</p>
+          </>
         ) : (
-          <button type="submit" className={`btn`} onClick={() => bookVenue()}>
+          <button
+            type="submit"
+            className="btn"
+            onClick={() => bookVenue()}
+          >
             Book now
           </button>
         )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { API_venues } from "../api/constants/url";
 import useApi from "../hooks/useAPI";
 import { useParams } from "react-router-dom";
@@ -48,6 +48,10 @@ function Venue() {
       return <PetsIcon sx={{ width: 35, height: 30 }} />;
     }
   }
+
+  useEffect(() => {
+    document.title = `Holidaze | ${name}`;
+  }, []);
 
   return (
     <>

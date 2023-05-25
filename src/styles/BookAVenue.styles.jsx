@@ -15,7 +15,9 @@ export const StyledBook = styled.div`
   .bookingInfo {
     display: flex;
     flex-direction: column;
-
+    div {
+      display: flex;
+    }
     .guests {
       display: flex;
       justify-content: space-between;
@@ -37,6 +39,9 @@ export const StyledBook = styled.div`
     height: 40px;
     border: none;
     border-radius: 15px;
-    cursor: pointer;
+  }
+  .message {
+    margin-top: 2px;
+    font-size: 12px;
   }
 `;
