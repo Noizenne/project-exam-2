@@ -8,6 +8,7 @@ import { theme } from "./styles/theme";
 //Pages
 import Home from "./pages/home";
 import VenuePage from "./pages/venue";
+import ProfilePage from "./pages/profile";
 
 function App() {
   return (
@@ -16,11 +17,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='/venue/:id' element={<VenuePage />}/>
-      {/* <Route path='/venues' element={<Venues />}/>
-      <Route path='/about' element={<About />}/>
-      <Route path='/contact' element={<Contact />}/>
-      <Route path='/register' element={<Register />}/>
-      <Route path='/login' element={<Login />}/> */}
+          <Route path='/profile/:name' element={<ProfilePage />}/>
+
         </Route>
       </Routes>
     </ThemeProvider>

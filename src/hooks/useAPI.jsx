@@ -17,12 +17,13 @@ const useApi = (endpoint, method, body) => {
         setIsError(false);
 
         const token = localStorage.getItem("token");
+        const parsedToken = JSON.parse(token)
 
         const options = await fetch(url + endpoint, {
          method: method,
           headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${parsedToken}`,
             },
          body: JSON.stringify(body),
         });

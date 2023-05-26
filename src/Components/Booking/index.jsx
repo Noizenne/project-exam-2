@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Calendar from "./Calendar";
-import { isWithinInterval, format } from "date-fns";
+import { isWithinInterval } from "date-fns";
 import PostData from "../../api/PostData";
 import { API_URL } from "../../api/constants/url";
 import { API_bookings } from "../../api/constants/url";
