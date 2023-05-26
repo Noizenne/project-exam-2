@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { StyledRegister } from "../styles/Register.styles";
+import { StyledForm } from "../styles/Form.styles";
 import { Style } from "@mui/icons-material";
 import { API_URL } from "../api/constants/url";
 import { API_authLogin } from "../api/constants/url";
@@ -56,7 +56,7 @@ function Login() {
       const profile = await response.json();
       storage.save("token", profile.accessToken);
       storage.save("profile", profile);
-      window.location.href = `/pages/profile/index.html?name=${profile.name}`;
+      window.location.href = `/profile/${profile.name}`;
       return profile;
     }
 
@@ -64,7 +64,7 @@ function Login() {
   };
 
   return (
-    <StyledRegister>
+    <StyledForm>
       <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <label>Email</label>
@@ -75,7 +75,7 @@ function Login() {
           <button type="submit">LOGIN</button>
         </div>
       </form>
-    </StyledRegister>
+    </StyledForm>
   );
 }
 

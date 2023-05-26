@@ -2,20 +2,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { StyledRegister } from "../styles/Register.styles";
+import { StyledForm } from "../styles/Form.styles";
 
 const schema = yup
   .object({
-    name: yup
-    .string()
-    .min(1, "Please enter your name"),
+    name: yup.string().min(1, "Please enter your name"),
     email: yup
       .string()
       .email("Please enter your email")
-      .matches(
-        /^[\w\-.]+@stud.?noroff.no$/,
-        "Must be a student noroff e-mail"
-      )
+      .matches(/^[\w\-.]+@stud.?noroff.no$/, "Must be a student noroff e-mail")
       .required("Please enter a valid email address")
       .typeError("Please enter a valid email address"),
     password: yup
@@ -70,7 +65,6 @@ function Register() {
       };
     }
 
-    
     const postData = async (profile) => {
       const options = {
         method: "POST",
@@ -85,9 +79,8 @@ function Register() {
         const json = await response.json();
         if (json.id) {
           reset();
-          console.log("You have created a user, you may login")
-        }
-        else {
+          console.log("You have created a user, you may login");
+        } else {
           alert("There's been an error.");
         }
       } catch (error) {
@@ -99,7 +92,7 @@ function Register() {
   };
 
   return (
-    <StyledRegister>
+    <StyledForm>
       <h1>Register</h1>
       <form onSubmit={handleSubmit(onHandleSubmit)}>
         <label>Username</label>
@@ -112,7 +105,11 @@ function Register() {
         <input type="password" id="password" {...register("password")} />
         <p>{errors.password?.message}</p>
         <label>Confirm Password</label>
-        <input type="password" id="againPassword"{...register("againPassword")} />
+        <input
+          type="password"
+          id="againPassword"
+          {...register("againPassword")}
+        />
         <p>{errors.againPassword?.message}</p>
         <label>Do you want to be a venue manager?</label>
         <div className="options">
@@ -134,11 +131,10 @@ function Register() {
           />
         </div>
         <div className="btn">
-        <button type="submit">REGISTER</button>
+          <button type="submit">REGISTER</button>
         </div>
-       
       </form>
-    </StyledRegister>
+    </StyledForm>
   );
 }
 

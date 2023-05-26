@@ -48,7 +48,7 @@ function AccountLoggedIn() {
 
   function handleLogout() {
     localStorage.clear();
-    window.location.reload();
+    window.location.replace("/");
   }
 
   const profile = load("profile");

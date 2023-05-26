@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledRegister = styled.div`
+export const StyledForm = styled.div`
 
     h1 {
         font-size: 25px;
@@ -15,6 +15,7 @@ export const StyledRegister = styled.div`
         label {
             margin-left: 2.5rem;
             padding: 5px;
+            font-weight: 600;
         }
         input {
             margin: auto;
@@ -25,6 +26,30 @@ export const StyledRegister = styled.div`
             border-color: ${({theme}) => theme.colors.primary};
         }
 
+        textarea {
+            width: 80%;
+            padding: 5px;
+            margin: auto;
+            border-radius: 15px;
+            border: 1px solid;
+            border-color: ${({theme}) => theme.colors.primary};
+        }
+
+        .smaller {
+            display: flex;
+            margin: auto;
+            width: 80%;
+            div {
+                display: flex;
+            flex-direction: column;
+            label {
+                margin: 0;
+            }
+            }
+            input {
+                width: 90%;
+            }
+        }
         .options {
             display: flex;
 
@@ -33,6 +58,18 @@ export const StyledRegister = styled.div`
             }
         }
 
+        .facility {
+            display: flex;
+
+            label {
+                width: 100px;
+                font-weight: 100;
+            }
+            input {
+                width: 20px;
+                margin: auto;
+            }
+        }
         .btn {
             display: flex;
             justify-content: center;
@@ -45,6 +82,7 @@ export const StyledRegister = styled.div`
             height: 40px;
             border: none;
             border-radius: 15px;
+            cursor: pointer;
             }
         }
         
