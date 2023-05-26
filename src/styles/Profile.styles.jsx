@@ -6,6 +6,7 @@ export const StyledProfile = styled.div`
   margin: auto;
   .container {
     display: flex;
+    justify-content: center;
 
     .profileInfo {
       display: flex;
@@ -24,6 +25,10 @@ export const StyledProfile = styled.div`
       }
     }
     .bookings {
+      .add {
+        display: flex;
+        justify-content: space-between;
+      }
       .title {
         display: flex;
         margin-left: 30px;
@@ -40,6 +45,12 @@ export const StyledProfile = styled.div`
           margin: 0;
           font-size: 25px;
           align-self: center;
+        }
+
+        .addVenue {
+          p {
+            font-weight: 600;
+          }
         }
       }
     }
@@ -65,11 +76,17 @@ export const StyledProfile = styled.div`
             text-decoration: none;
             color: black;
             display: flex;
+            font-weight: 600;
 
             .info {
-              h4 {
-                margin: 0;
+              .options {
+                display: flex;
+                justify-content: space-between;
+                .icon {
+                  color: ${({ theme }) => theme.colors.primary};
+                }
               }
+
               .dates {
                 display: flex;
                 p {
