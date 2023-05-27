@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import format from "date-fns/format";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import OptionForBooking from "./OptionForBooking";
+import DeleteBooking from "./DeleteBooking";
 
 function UsersBooking({ item }) {
   const { dateFrom, dateTo, venue = {} } = item;
@@ -23,8 +23,10 @@ function UsersBooking({ item }) {
       </div>
       <div className="info">
         <div className="options">
-          <Link to={`/venue/${id}`}>{name}</Link>
-          <OptionForBooking />
+          <Link to={`/venue/${id}`}>
+            {name}
+          </Link>
+          <DeleteBooking item={item} />
         </div>
         <div className="dates">
           <div>

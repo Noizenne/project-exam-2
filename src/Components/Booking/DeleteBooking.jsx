@@ -6,8 +6,12 @@ import { MenuItem } from "@mui/material";
 import { Modal } from "@mui/material";
 import { Box } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import DeleteData from '../../api/DeleteData';
+import { API_URL } from '../../api/constants/url';
+import { API_bookings } from '../../api/constants/url';
 
-function OptionForBooking() {
+function DeleteBooking({item}) {
+    const {id} = item;
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
   
@@ -27,18 +31,10 @@ function OptionForBooking() {
       setAnchorEl(null);
     };
   
-    const modal = {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      width: 400,
-      bgcolor: "#f6f6f6",
-      border: "1px solid #0031DD",
-      boxShadow: 24,
-      borderRadius: 10,
-    };
-  
+    async function Delete(id) {
+        const res = await DeleteData(`${API_URL}${API_bookings}/${id}`)
+        window.location.reload();
+    }
     return (
       <>
         <Button
@@ -57,27 +53,11 @@ function OptionForBooking() {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={handleOpenEdit}>Edit</MenuItem>
-          <MenuItem onClick={handleOpen}>Delete</MenuItem>
-          <Modal
-            open={openModal}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={modal}>Delete</Box>
-          </Modal>
-          <Modal
-            open={openModalEdit}
-            onClose={handleCloseModalEdit}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={modal}>Edit</Box>
-          </Modal>
+          <MenuItem onClick={() => Delete(item.id)}>Delete</MenuItem>
+         
         </Menu>
       </>
     );
 }
 
-export default OptionForBooking
+export default DeleteBooking

@@ -85,6 +85,12 @@ export const StyledForm = styled.div`
             cursor: pointer;
             }
         }
+
+        p {
+            margin: auto;
+            color: orangered;
+            font-size: 14px;
+        }
         
     }
 
