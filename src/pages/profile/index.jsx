@@ -9,17 +9,18 @@ import { load } from "../../storage";
 import { StyledProfile } from "../../styles/Profile.styles";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 import UsersBooking from "../../components/Booking/UsersBooking";
 import format from "date-fns/format";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import {Menu} from "@mui/material";
-import {MenuItem} from "@mui/material";
-import {Modal} from "@mui/material";
-import {Box} from "@mui/material";
+import { Menu } from "@mui/material";
+import { MenuItem } from "@mui/material";
+import { Modal } from "@mui/material";
+import { Box } from "@mui/material";
 import UsersVenues from "../../components/UsersVenues";
 import AddVenue from "../../components/AddVenue";
+import EditAvatar from "../../components/EditAvatar";
 
 function ProfilePage() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -27,6 +28,10 @@ function ProfilePage() {
   const [openModal, setOpenModal] = React.useState(false);
   const handleOpen = () => setOpenModal(true);
   const handleClose = () => setOpenModal(false);
+
+  const [openAvatar, setOpenAvatar] = React.useState(false);
+  const handleOpenAvatar = () => setOpenAvatar(true);
+  const handleCloseAvatar = () => setOpenAvatar(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -63,19 +68,19 @@ function ProfilePage() {
   function AddAVenue() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-  
+
     const [openModal, setOpenModal] = React.useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
-  
+
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
-  
+
     const handleCloseIcon = () => {
       setAnchorEl(null);
     };
-  
+
     const modal = {
       position: "absolute",
       top: "50%",
@@ -87,7 +92,7 @@ function ProfilePage() {
       boxShadow: 24,
       borderRadius: 10,
     };
-  
+
     return (
       <>
         <Button
@@ -96,7 +101,7 @@ function ProfilePage() {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-        <AddIcon fontSize="large"/>
+          <AddIcon fontSize="large" />
         </Button>
         <Menu
           anchorEl={anchorEl}
@@ -114,7 +119,7 @@ function ProfilePage() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={modal}>
-              <AddVenue />
+              <AddVenue venues={venues} />
             </Box>
           </Modal>
         </Menu>
@@ -131,11 +136,20 @@ function ProfilePage() {
           ) : (
             <img className="profileImg" src={avatar}></img>
           )}
-
+          <Button onClick={handleOpenAvatar}>Edit avatar</Button>
+          <Modal
+            open={openAvatar}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={registerModal}>
+              <EditAvatar data={data}/>
+            </Box>
+          </Modal>
           <p>{data.name}</p>
           {!venueManager ? "" : <p>VenueManager</p>}
           <p>{data.email}</p>
-          <p>Edit profile</p>
         </div>
         <div>
           {venueManager ? (
@@ -152,7 +166,7 @@ function ProfilePage() {
                 </div>
               </div>
               <ul>
-              {venues.map((item) => (
+                {venues.map((item) => (
                   <UsersVenues key={item.id} item={item} />
                 ))}
               </ul>

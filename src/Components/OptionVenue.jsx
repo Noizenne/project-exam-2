@@ -6,8 +6,10 @@ import { MenuItem } from "@mui/material";
 import { Modal } from "@mui/material";
 import { Box } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import UpdateData from "../api/UpdateData";
+import EditVenue from "./EditVenue";
 
-function OptionForVenue() {
+function OptionForVenue({item}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -73,7 +75,7 @@ function OptionForVenue() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={modal}>Edit</Box>
+          <Box sx={modal}><EditVenue item={item} /></Box>
         </Modal>
       </Menu>
     </>

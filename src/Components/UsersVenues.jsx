@@ -10,7 +10,7 @@ function UsersVenues({ item }) {
   return (
     <StyledVenueCard key={id}>
       <img
-        src={media}
+        src={media[0]}
         alt={name}
         onError={(event) => {
           event.target.src = "/noImg.jpg";
@@ -19,9 +19,9 @@ function UsersVenues({ item }) {
       />
       <div className="options">
         <Link to={`/venue/${id}`}>
-          <h3>{name}</h3>
+          {name}
         </Link>
-        <OptionForVenue />
+        <OptionForVenue item={item}/>
       </div>
     </StyledVenueCard>
   );
