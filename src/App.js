@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import { theme } from "./styles/theme";
 
 //Pages
