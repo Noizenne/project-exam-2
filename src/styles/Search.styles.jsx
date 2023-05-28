@@ -16,7 +16,7 @@ export const StyledSearch = styled.div`
             border: none;
             border-radius: 15px;
             font-size: 16px;
-            width: 260px;
+            max-width: 260px;
             margin-left: 5px;
             :focus {
                 outline: none;

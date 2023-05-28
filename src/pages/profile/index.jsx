@@ -56,7 +56,7 @@ function ProfilePage() {
   const profile = load("profile");
   const userName = profile.name;
   const avatar = load("avatar");
-  console.log(avatar)
+
   const { data, isLoading, error } = useApi(
     `${API_profiles}/${userName}?_venues=true&_bookings=true`
   );
@@ -141,7 +141,7 @@ function ProfilePage() {
           <Button onClick={handleOpenAvatar}>Edit avatar</Button>
           <Modal
             open={openAvatar}
-            onClose={handleClose}
+            onClose={handleCloseAvatar}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >

@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const StyledBook = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   border: 1px solid black;
   border-radius: 15px;
   margin: 10px;
-  padding: 10px;
+  padding: 1rem;
 
   h3 {
     font-size: 20px;
@@ -15,6 +16,7 @@ export const StyledBook = styled.div`
   .bookingInfo {
     display: flex;
     flex-direction: column;
+    
     div {
       display: flex;
     }

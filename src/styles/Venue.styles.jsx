@@ -58,6 +58,10 @@ export const StyledVenue = styled.div`
       text-align: start;
 
       .icons {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+        .icon {
         color: ${({ theme }) => theme.colors.primary};
         background-color: #0095ff47;
         width: 40px;
@@ -66,6 +70,7 @@ export const StyledVenue = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+      }
       }
     }
   }

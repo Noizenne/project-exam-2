@@ -9,6 +9,8 @@ import WifiIcon from "@mui/icons-material/Wifi";
 import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
 import BreakfastDiningIcon from "@mui/icons-material/BreakfastDining";
 import PetsIcon from "@mui/icons-material/Pets";
+import { API_URL } from "../api/constants/url";
+import { API_venues } from "../api/constants/url";
 
 const schema = yup
   .object()
@@ -24,7 +26,7 @@ const schema = yup
       .typeError("Please enter a description")
       .min(20, "Must contain at least 20 characters")
       .max(400, "Max 4000 characters"),
-    media: yup.string().trim().url("Must be a valid image URL"),
+    media: yup.string().url("Must be a valid image URL"),
     price: yup
       .number()
       .typeError("Please enter a number")
@@ -43,10 +45,8 @@ const schema = yup
   })
   .required();
 
-function AddVenue() {
-  const url = "https://api.noroff.dev/api/v1/holidaze/venues";
-  const token = load("token");
-
+function AddVenue({venues}) {
+  
   const {
     register,
     handleSubmit,
@@ -86,27 +86,7 @@ function AddVenue() {
           pets: data.pets,
         },
       };
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newData),
-      };
-
-      try {
-        const response = await fetch(url, options);
-        const json = await response.json();
-        if (json.id) {
-          reset();
-          console.log("You have created a venue");
-        } else {
-          alert("There's been an error.");
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      await PostData(`${API_URL}${API_venues}`, newData)
     }
   };
   return (

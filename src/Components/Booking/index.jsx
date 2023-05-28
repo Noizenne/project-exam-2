@@ -117,7 +117,7 @@ function Booking({ venue }) {
           <p>Service fee: ${serviceFee} </p>
         </div>
         <div>
-          <p>Total price: ${total}</p>
+          <p>Total price: ${total ? total : "0"}</p>
         </div>
         {!profile ? (
           <>

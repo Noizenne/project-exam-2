@@ -42,7 +42,6 @@ function Home() {
     setFilteredVenues(result);
   }
 
-
   return (
     <StyledHome>
       <div className="hero">
@@ -69,11 +68,10 @@ function Home() {
               </div>
               <button type="submit">Search</button>
             </div>
-            
           </div>
         </div>
       </div>
-      <div className="suggested">
+      {/* <div className="suggested">
         <h2>Suggested destinations</h2>
         <div className="countries">
           <Link to="/norway" className="country">
@@ -93,7 +91,7 @@ function Home() {
             <p>Australia</p>
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className="venuesContainer">
         <h2>Featured venues</h2>
         <Venues venues={venues} />

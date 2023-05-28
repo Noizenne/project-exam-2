@@ -23,7 +23,7 @@ export const StyledHome = styled.div`
         display: flex;
         flex-direction: column;
         text-align: center;
-        width: 500px;
+        width: 100%;
         bottom: 50px;
 
         h1 {
@@ -60,13 +60,15 @@ export const StyledHome = styled.div`
           flex-direction: column;
           top: 164px;
           background-color: ${({ theme }) => theme.colors.white};
+          z-index: 1001;
+          padding: 10px;
 
           a {
             color: ${({ theme }) => theme.colors.black};
             align-items: center;
             text-decoration: none;
             font-size: 16px;
-            height: 25px;
+            height: 100%;
             margin: 12px 0;
             padding: 0 20px;
             border-bottom: 1px solid black;
@@ -84,13 +86,14 @@ export const StyledHome = styled.div`
       display: flex;
       justify-content: space-between;
       margin-top: 2rem;
+      flex-wrap: wrap;
     }
 
     .country {
         position: relative;
         padding: 10px;
       img {
-        width: 100%;
+        width: 200px;
         height: 100%;
         border-radius: 15px;
       }

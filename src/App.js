@@ -18,7 +18,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/venue/:id' element={<VenuePage />}/>
           <Route path='/profile/:name' element={<ProfilePage />}/>
-
         </Route>
       </Routes>
     </ThemeProvider>

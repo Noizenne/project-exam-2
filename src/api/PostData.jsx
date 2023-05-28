@@ -11,8 +11,7 @@ export default async function PostData(url, body) {
       },
       body: JSON.stringify(body),
     });
-    const json = await response.json();
-    return json;
+    return response.status;
   } catch (error) {
     console.log(error);
     return error;
