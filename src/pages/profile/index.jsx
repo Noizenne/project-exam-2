@@ -21,6 +21,8 @@ import { Box } from "@mui/material";
 import UsersVenues from "../../components/UsersVenues";
 import AddVenue from "../../components/AddVenue";
 import EditAvatar from "../../components/EditAvatar";
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/Error/Error";
 
 function ProfilePage() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -57,14 +59,23 @@ function ProfilePage() {
   const userName = profile.name;
   const avatar = load("avatar");
 
-  const { data, isLoading, error } = useApi(
+  const { data, isLoading, isError } = useApi(
     `${API_profiles}/${userName}?_venues=true&_bookings=true`
   );
+
 
   const { id, venueManager, bookings = [], venues = [] } = data;
 
   useEffect(() => {
     document.title = `Holidaze | ${userName}`;
+
+    if(isLoading) {
+      return <Loader />
+    }
+  
+    if(isError) {
+      return <ErrorMessage />
+    }
   }, []);
 
   function AddAVenue() {

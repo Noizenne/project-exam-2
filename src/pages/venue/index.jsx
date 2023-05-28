@@ -11,10 +11,12 @@ import PetsIcon from "@mui/icons-material/Pets";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import Booking from "../../components/Booking";
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/Error/Error";
 
 function VenuePage() {
   const { id } = useParams();
-  const { data, isLoading, error } = useApi(
+  const { data, isLoading, isError } = useApi(
     `${API_venues}/${id}?_bookings=true`
   );
   const {
@@ -34,6 +36,18 @@ function VenuePage() {
 
   const { wifi, parking, breakfast, pets } = meta;
 
+  useEffect(() => {
+    document.title = `Holidaze | ${name}`;
+
+    if(isLoading) {
+      return <Loader />
+    }
+  
+    if(isError) {
+      return <ErrorMessage />
+    }
+  
+  }, []);
   /*  function Facilities() {
     if (wifi === true) {
       return <WifiIcon sx={{ width: 35, height: 30 }} />;
@@ -49,9 +63,6 @@ function VenuePage() {
     }
   } */
 
-  useEffect(() => {
-    document.title = `Holidaze | ${name}`;
-  }, []);
 
   return (
     <>

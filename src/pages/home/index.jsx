@@ -5,6 +5,8 @@ import { API_venues } from "../../api/constants/url";
 import Venues from "../../components/Venues";
 import { Link } from "react-router-dom";
 import Search from "../../components/Search";
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/Error/Error";
 
 function Home() {
   const [venues, setVenues] = useState([]);
@@ -34,6 +36,14 @@ function Home() {
     getVenues(API_URL + API_venues);
   }, []);
 
+  if(isLoading) {
+    return <Loader />
+  }
+
+  if(isError) {
+    return <ErrorMessage />
+  }
+  
   function onSearchInputChange(value) {
     setSearchInput(value);
     const result = venues.filter((venue) => {
@@ -41,6 +51,8 @@ function Home() {
     });
     setFilteredVenues(result);
   }
+
+  
 
   return (
     <StyledHome>
