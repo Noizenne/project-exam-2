@@ -6,6 +6,13 @@ import MenuItem from "@mui/material/MenuItem";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import AdbIcon from "@mui/icons-material/Adb";
 import { StyledNav } from "../../../styles/Nav.styles";
 import { API_URL } from "../../../api/constants/url";
 import { API_venues } from "../../../api/constants/url";
@@ -14,7 +21,6 @@ import Login from "../../Login";
 import { load } from "../../../storage";
 
 function AccountLoggedIn() {
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -168,6 +174,17 @@ function Header() {
   const [isError, setIsError] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
 
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
   useEffect(() => {
     async function getVenues(url) {
       try {
@@ -192,16 +209,70 @@ function Header() {
   return (
     <header style={{ width: "70%", margin: "auto" }}>
       <StyledNav>
-        <NavLink to="/">
-          <img src="/logo.png" alt="Holidaze Logo" />
-        </NavLink>
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <NavLink to="/">
+              <img src="/logo.png" alt="Holidaze Logo" />
+            </NavLink>
 
-        <div className="links">
-          <Link to="/">Home</Link>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+                sx={{ flexGrow: 1, display: { justifyContent: "right" } }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                <div className="links">
+                  <MenuItem><Link to="/">Home</Link></MenuItem>
+                  <MenuItem><Link to="/about">About</Link></MenuItem>
+                  <MenuItem><Link to="/contact">Contact</Link></MenuItem>
+                </div>
+              </Menu>
+            </Box>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex", justifyContent: "right" },
+              }}
+            >
+              <div className="links">
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <Link to="/contact">Contact</Link>
+              </div>
+            </Box>
+            <Box sx={{ flexGrow: 0 }}>
+              <div>{!token ? <AccountMenu /> : <AccountLoggedIn />}</div>
+            </Box>
+          </Toolbar>
+        </Container>
+        {/* <Link to="/">Home</Link>
           <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
-          <div>{!token ? <AccountMenu /> : <AccountLoggedIn />}</div>
-        </div>
+          <Link to="/contact">Contact</Link> */}
+        {/* <div>{!token ? <AccountMenu /> : <AccountLoggedIn />}</div> */}
       </StyledNav>
     </header>
   );
