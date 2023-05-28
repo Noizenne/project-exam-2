@@ -62,15 +62,15 @@ export const StyledVenue = styled.div`
         justify-content: space-between;
         width: 200px;
         .icon {
-        color: ${({ theme }) => theme.colors.primary};
-        background-color: #0095ff47;
-        width: 40px;
-        height: 40px;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+          color: ${({ theme }) => theme.colors.primary};
+          background-color: #0095ff47;
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
   }

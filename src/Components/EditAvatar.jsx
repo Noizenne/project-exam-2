@@ -7,7 +7,7 @@ import { load, save } from "../storage";
 function EditAvatar({ data }) {
   const [avatar, setAvatar] = useState("");
   const [newAvatarUrl, setNewAvatarUrl] = useState("");
-  
+
   useEffect(() => {
     const profile = load("profile");
 
@@ -18,10 +18,7 @@ function EditAvatar({ data }) {
 
   const handleSave = () => {
     setAvatar(newAvatarUrl);
-    save(
-      "avatar",
-      { avatar: newAvatarUrl }
-    );
+    save("avatar", { avatar: newAvatarUrl });
   };
   return (
     <StyledForm>
@@ -34,7 +31,9 @@ function EditAvatar({ data }) {
           onChange={(event) => setNewAvatarUrl(event.target.value)}
         />
         <div className="btn">
-            <button type="submit" onClick={handleSave}>EDIT</button>
+          <button type="submit" onClick={handleSave}>
+            EDIT
+          </button>
         </div>
       </form>
     </StyledForm>

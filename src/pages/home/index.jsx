@@ -36,14 +36,14 @@ function Home() {
     getVenues(API_URL + API_venues);
   }, []);
 
-  if(isLoading) {
-    return <Loader />
+  if (isLoading) {
+    return <Loader />;
   }
 
-  if(isError) {
-    return <ErrorMessage />
+  if (isError) {
+    return <ErrorMessage />;
   }
-  
+
   function onSearchInputChange(value) {
     setSearchInput(value);
     const result = venues.filter((venue) => {
@@ -51,8 +51,6 @@ function Home() {
     });
     setFilteredVenues(result);
   }
-
-  
 
   return (
     <StyledHome>

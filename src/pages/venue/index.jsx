@@ -39,14 +39,13 @@ function VenuePage() {
   useEffect(() => {
     document.title = `Holidaze | ${name}`;
 
-    if(isLoading) {
-      return <Loader />
+    if (isLoading) {
+      return <Loader />;
     }
-  
-    if(isError) {
-      return <ErrorMessage />
+
+    if (isError) {
+      return <ErrorMessage />;
     }
-  
   }, []);
   /*  function Facilities() {
     if (wifi === true) {
@@ -62,7 +61,6 @@ function VenuePage() {
       return <PetsIcon sx={{ width: 35, height: 30 }} />;
     }
   } */
-
 
   return (
     <>

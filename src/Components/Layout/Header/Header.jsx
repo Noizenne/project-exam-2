@@ -246,9 +246,15 @@ function Header() {
                 }}
               >
                 <div className="links">
-                  <MenuItem><Link to="/">Home</Link></MenuItem>
-                  <MenuItem><Link to="/about">About</Link></MenuItem>
-                  <MenuItem><Link to="/contact">Contact</Link></MenuItem>
+                  <MenuItem>
+                    <Link to="/">Home</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/about">About</Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link to="/contact">Contact</Link>
+                  </MenuItem>
                 </div>
               </Menu>
             </Box>
@@ -269,10 +275,6 @@ function Header() {
             </Box>
           </Toolbar>
         </Container>
-        {/* <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link> */}
-        {/* <div>{!token ? <AccountMenu /> : <AccountLoggedIn />}</div> */}
       </StyledNav>
     </header>
   );

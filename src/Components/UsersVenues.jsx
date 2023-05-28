@@ -18,10 +18,8 @@ function UsersVenues({ item }) {
         }}
       />
       <div className="options">
-        <Link to={`/venue/${id}`}>
-          {name}
-        </Link>
-        <OptionForVenue item={item}/>
+        <Link to={`/venue/${id}`}>{name}</Link>
+        <OptionForVenue item={item} />
       </div>
     </StyledVenueCard>
   );

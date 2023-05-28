@@ -63,18 +63,17 @@ function ProfilePage() {
     `${API_profiles}/${userName}?_venues=true&_bookings=true`
   );
 
-
   const { id, venueManager, bookings = [], venues = [] } = data;
 
   useEffect(() => {
     document.title = `Holidaze | ${userName}`;
 
-    if(isLoading) {
-      return <Loader />
+    if (isLoading) {
+      return <Loader />;
     }
-  
-    if(isError) {
-      return <ErrorMessage />
+
+    if (isError) {
+      return <ErrorMessage />;
     }
   }, []);
 
@@ -157,7 +156,7 @@ function ProfilePage() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={registerModal}>
-              <EditAvatar data={data}/>
+              <EditAvatar data={data} />
             </Box>
           </Modal>
           <p>{data.name}</p>

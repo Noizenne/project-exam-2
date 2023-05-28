@@ -3,7 +3,7 @@ import format from "date-fns/format";
 import { Link } from "react-router-dom";
 import { load } from "../storage";
 
-function Confirmation({data, total}) {
+function Confirmation({ data, total }) {
   const profile = load("profile");
   return (
     <div>

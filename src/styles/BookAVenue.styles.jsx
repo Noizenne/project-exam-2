@@ -16,7 +16,7 @@ export const StyledBook = styled.div`
   .bookingInfo {
     display: flex;
     flex-direction: column;
-    
+
     div {
       display: flex;
     }

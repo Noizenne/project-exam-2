@@ -56,7 +56,7 @@ function EditVenue({ item }) {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  
+
   const onHandleSubmit = async (data) => {
     let newData = {};
 

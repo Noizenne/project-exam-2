@@ -45,8 +45,7 @@ const schema = yup
   })
   .required();
 
-function AddVenue({venues}) {
-  
+function AddVenue({ venues }) {
   const {
     register,
     handleSubmit,
@@ -86,7 +85,7 @@ function AddVenue({venues}) {
           pets: data.pets,
         },
       };
-      await PostData(`${API_URL}${API_venues}`, newData)
+      await PostData(`${API_URL}${API_venues}`, newData);
     }
   };
   return (

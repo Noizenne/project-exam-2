@@ -8,7 +8,6 @@ const useApi = (endpoint, method, body) => {
   const [isError, setIsError] = useState(false);
 
   const url = `${API_URL}`;
-  
 
   useEffect(() => {
     async function getData() {
@@ -17,15 +16,15 @@ const useApi = (endpoint, method, body) => {
         setIsError(false);
 
         const token = localStorage.getItem("token");
-        const parsedToken = JSON.parse(token)
+        const parsedToken = JSON.parse(token);
 
         const options = await fetch(url + endpoint, {
-         method: method,
+          method: method,
           headers: {
-              "Content-Type": "application/json; charset=UTF-8",
-              Authorization: `Bearer ${parsedToken}`,
-            },
-         body: JSON.stringify(body),
+            "Content-Type": "application/json; charset=UTF-8",
+            Authorization: `Bearer ${parsedToken}`,
+          },
+          body: JSON.stringify(body),
         });
         const json = await options.json();
         setData(json);

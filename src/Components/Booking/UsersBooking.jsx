@@ -23,9 +23,7 @@ function UsersBooking({ item }) {
       </div>
       <div className="info">
         <div className="options">
-          <Link to={`/venue/${id}`}>
-            {name}
-          </Link>
+          <Link to={`/venue/${id}`}>{name}</Link>
           <DeleteBooking item={item} />
         </div>
         <div className="dates">

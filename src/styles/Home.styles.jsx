@@ -90,8 +90,8 @@ export const StyledHome = styled.div`
     }
 
     .country {
-        position: relative;
-        padding: 10px;
+      position: relative;
+      padding: 10px;
       img {
         width: 200px;
         height: 100%;

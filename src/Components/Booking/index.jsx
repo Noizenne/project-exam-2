@@ -73,10 +73,8 @@ function Booking({ venue }) {
   }, [dateRange]);
 
   if (data && data.id) {
-    return (
-    <Confirmation data={data}/> 
-    )
-  } 
+    return <Confirmation data={data} />;
+  }
   return (
     <StyledBook>
       <div>
@@ -127,11 +125,7 @@ function Booking({ venue }) {
             <p className="message">You must login to book a venue</p>
           </>
         ) : (
-          <button
-            type="submit"
-            className="btn"
-            onClick={() => bookVenue()}
-          >
+          <button type="submit" className="btn" onClick={() => bookVenue()}>
             Book now
           </button>
         )}

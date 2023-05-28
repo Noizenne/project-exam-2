@@ -27,7 +27,6 @@ export const StyledProfile = styled.div`
       }
     }
     .bookings {
-
       .add {
         display: flex;
         justify-content: space-between;
