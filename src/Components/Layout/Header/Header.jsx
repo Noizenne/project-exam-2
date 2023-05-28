@@ -8,29 +8,20 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import AdbIcon from "@mui/icons-material/Adb";
 import { StyledNav } from "../../../styles/Nav.styles";
 import { API_URL } from "../../../api/constants/url";
 import { API_venues } from "../../../api/constants/url";
 import Register from "../../Register";
 import Login from "../../Login";
 import { load } from "../../../storage";
+import Loader from "../../Loader/Loader";
+import ErrorMessage from "../../Error/Error";
 
 function AccountLoggedIn() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-
-  const [openModalLogin, setOpenModalLogin] = React.useState(false);
-  const handleOpenLogin = () => setOpenModalLogin(true);
-  const handleCloseModalLogin = () => setOpenModalLogin(false);
-
-  const [openModal, setOpenModal] = React.useState(false);
-  const handleOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -38,18 +29,6 @@ function AccountLoggedIn() {
 
   const handleCloseIcon = () => {
     setAnchorEl(null);
-  };
-
-  const registerModal = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "#f6f6f6",
-    border: "1px solid #0031DD",
-    boxShadow: 24,
-    borderRadius: 10,
   };
 
   function handleLogout() {
@@ -89,7 +68,6 @@ function AccountLoggedIn() {
 }
 
 function AccountMenu() {
-  const username = localStorage.getItem("username");
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -172,10 +150,8 @@ function Header() {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(false);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -206,6 +182,14 @@ function Header() {
     getVenues(API_URL + API_venues);
   }, []);
 
+  if(isLoading) {
+    return <Loader />
+  }
+
+  if(isError) {
+    return <ErrorMessage />
+  }
+  
   return (
     <header style={{ width: "70%", margin: "auto" }}>
       <StyledNav>

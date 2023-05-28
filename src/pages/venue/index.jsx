@@ -23,13 +23,9 @@ function VenuePage() {
     name,
     description,
     media,
-    price,
     rating,
     location = {},
-    maxGuests,
     meta = {},
-    bookings,
-    owner,
   } = data;
 
   const { city, country } = location;
@@ -47,6 +43,7 @@ function VenuePage() {
       return <ErrorMessage />;
     }
   }, []);
+
   /*  function Facilities() {
     if (wifi === true) {
       return <WifiIcon sx={{ width: 35, height: 30 }} />;

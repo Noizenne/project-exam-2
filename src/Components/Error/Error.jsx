@@ -11,4 +11,4 @@ function ErrorMessage() {
   );
 }
 
-export default Error;
+export default ErrorMessage;

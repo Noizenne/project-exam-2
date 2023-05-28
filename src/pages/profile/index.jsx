@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import useApi from "../../hooks/useAPI";
-import { API_bookings } from "../../api/constants/url";
-import { API_venues } from "../../api/constants/url";
 import { API_profiles } from "../../api/constants/url";
 import { load } from "../../storage";
 import { StyledProfile } from "../../styles/Profile.styles";
@@ -11,8 +8,6 @@ import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import AddIcon from "@mui/icons-material/Add";
 import UsersBooking from "../../components/Booking/UsersBooking";
-import format from "date-fns/format";
-import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { Menu } from "@mui/material";
 import { MenuItem } from "@mui/material";
@@ -26,22 +21,10 @@ import ErrorMessage from "../../components/Error/Error";
 
 function ProfilePage() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const [openModal, setOpenModal] = React.useState(false);
-  const handleOpen = () => setOpenModal(true);
-  const handleClose = () => setOpenModal(false);
 
   const [openAvatar, setOpenAvatar] = React.useState(false);
   const handleOpenAvatar = () => setOpenAvatar(true);
   const handleCloseAvatar = () => setOpenAvatar(false);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseIcon = () => {
-    setAnchorEl(null);
-  };
 
   const registerModal = {
     position: "absolute",
@@ -63,7 +46,7 @@ function ProfilePage() {
     `${API_profiles}/${userName}?_venues=true&_bookings=true`
   );
 
-  const { id, venueManager, bookings = [], venues = [] } = data;
+  const { venueManager, bookings = [], venues = [] } = data;
 
   useEffect(() => {
     document.title = `Holidaze | ${userName}`;
@@ -144,9 +127,9 @@ function ProfilePage() {
       <div className="container">
         <div className="profileInfo">
           {!avatar ? (
-            <img className="profileImg" src="/placeholder.jpg"></img>
+            <img className="profileImg" src="/placeholder.jpg" alt="Profile image"></img>
           ) : (
-            <img className="profileImg" src={avatar.avatar}></img>
+            <img className="profileImg" src={avatar.avatar} alt="Profile image"></img>
           )}
           <Button onClick={handleOpenAvatar}>Edit avatar</Button>
           <Modal

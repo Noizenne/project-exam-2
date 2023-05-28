@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Calendar from "./Calendar";
-import { isWithinInterval } from "date-fns";
 import PostData from "../../api/PostData";
 import { API_URL } from "../../api/constants/url";
 import { API_bookings } from "../../api/constants/url";
@@ -16,7 +14,6 @@ function Booking({ venue }) {
   const [numberOfGuests, setNumberOfGuests] = useState(1);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
-  const [isError, setIsError] = useState(true);
 
   const profile = load("profile");
   const serviceFee = 10;
@@ -52,29 +49,17 @@ function Booking({ venue }) {
     numberOfNights
       ? setTotalPrice(venue.price * numberOfNights)
       : setTotalPrice(venue.price);
-    // Create an array with all the dates from the chosen period
+
     while (currentDate <= endDate) {
       allDates.push(new Date(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
     }
-
-    // Check if the chosen period doesn't include any previously booked days
-    /* const hasConflict = allDates.some((date) =>
-      venue.bookings.some((booking) =>
-        isWithinInterval(date, {
-          start: new Date(booking.dateFrom),
-          end: new Date(booking.dateTo),
-        })
-      )
-    );
-    hasConflict || !startDate || !endDate
-      ? setIsError(true)
-      : setIsError(false); */
   }, [dateRange]);
 
   if (data && data.id) {
     return <Confirmation data={data} />;
   }
+
   return (
     <StyledBook>
       <div>

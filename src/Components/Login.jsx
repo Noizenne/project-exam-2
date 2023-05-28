@@ -2,12 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
 import { StyledForm } from "../styles/Form.styles";
-import { Style } from "@mui/icons-material";
 import { API_URL } from "../api/constants/url";
 import { API_authLogin } from "../api/constants/url";
 import * as storage from "../storage";
+
 const schema = yup
   .object({
     email: yup
@@ -33,7 +32,6 @@ function Login() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -69,8 +67,10 @@ function Login() {
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <label>Email</label>
         <input id="email" {...register("email")} />
+        <p>{errors.email?.message}</p>
         <label>Password</label>
         <input id="password" type="password" {...register("password")} />
+        <p>{errors.password?.message}</p>
         <div className="btn">
           <button type="submit">LOGIN</button>
         </div>

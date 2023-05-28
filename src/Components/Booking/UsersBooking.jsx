@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import format from "date-fns/format";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import DeleteBooking from "./DeleteBooking";
 
 function UsersBooking({ item }) {
-  const { dateFrom, dateTo, venue = {} } = item;
+  const { venue = {} } = item;
 
   const { id, name, media } = venue;
 

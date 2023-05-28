@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import UpdateData from "../api/UpdateData";
 import { StyledForm } from "../styles/Form.styles";
 import { load, save } from "../storage";
 

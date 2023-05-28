@@ -3,12 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import UpdateData from "../api/UpdateData";
-import { load } from "../storage";
 import { StyledForm } from "../styles/Form.styles";
-import WifiIcon from "@mui/icons-material/Wifi";
-import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
-import BreakfastDiningIcon from "@mui/icons-material/BreakfastDining";
-import PetsIcon from "@mui/icons-material/Pets";
 import { API_URL } from "../api/constants/url";
 import { API_venues } from "../api/constants/url";
 
@@ -52,7 +47,6 @@ function EditVenue({ item }) {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { StyledVenueCard } from "../styles/VenueCard.styles";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import OptionForVenue from "./OptionVenue";
 
 function UsersVenues({ item }) {
