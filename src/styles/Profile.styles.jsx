@@ -6,25 +6,28 @@ export const StyledProfile = styled.div`
   margin: auto;
   .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
     .profileInfo {
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 2rem;
       background-color: ${({ theme }) => theme.colors.primary};
       color: ${({ theme }) => theme.colors.white};
-      height: 380px;
       border-radius: 15px;
 
       .profileImg {
-        width: 140px;
+        width: 120px;
+        height: 120px;
         border: 1px solid ${({ theme }) => theme.colors.white};
         border-radius: 50%;
         margin: 10px;
       }
     }
     .bookings {
+
       .add {
         display: flex;
         justify-content: space-between;
@@ -82,6 +85,7 @@ export const StyledProfile = styled.div`
               .options {
                 display: flex;
                 justify-content: space-between;
+
                 .icon {
                   color: ${({ theme }) => theme.colors.primary};
                 }

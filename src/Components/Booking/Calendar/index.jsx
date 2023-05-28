@@ -25,7 +25,6 @@ function Calendar({ venueBookings, getDateRange }) {
 	return (
 		<>
 			<DatePicker
-				className="py-3 text-sm text-center text-blue-main border rounded-lg border-slate-300 shadow-sm w-full outline-blue-main"
 				dateFormat="dd/MM/yyyy"
 				minDate={new Date()}
 				selectsRange={true}
