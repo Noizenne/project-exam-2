@@ -2,9 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { ThemeProvider } from "styled-components";
-import Layout from "./components/Layout/Layout";
 import { theme } from "./styles/theme";
-
+import Layout from "./components/Layout/Layout";
 //Pages
 import Home from "./pages/home";
 import VenuePage from "./pages/venue";
